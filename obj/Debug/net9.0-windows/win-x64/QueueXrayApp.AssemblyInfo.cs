@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QueueXrayApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ed71ca591f3c472c9d29355c867378ffed56b07")]
 [assembly: System.Reflection.AssemblyProductAttribute("QueueXrayApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QueueXrayApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

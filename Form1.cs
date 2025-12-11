@@ -102,7 +102,7 @@ public partial class Form1 : Form
     private void InitializeSignalR()
     {
         _hubConnection = new HubConnectionBuilder()
-            .WithUrl("http://localhost:5221/queuehub")
+            .WithUrl("http://172.16.200.202:5221/queuehub")
             .WithAutomaticReconnect()
             .Build();
 
@@ -693,7 +693,7 @@ public partial class Form1 : Form
     {
         try
         {
-            string url = $"http://localhost:5221/api/QueueXray/AddQueueHx1?hn={Uri.EscapeDataString(hn)}&departmentId={departmentId}";
+            string url = $"http://172.16.200.202:5221/api/QueueXray/AddQueueHx1?hn={Uri.EscapeDataString(hn)}&departmentId={departmentId}";
 
             using (var req = new HttpRequestMessage(HttpMethod.Post, url))
             using (var res = await _httpClient.SendAsync(req))
@@ -743,7 +743,7 @@ public partial class Form1 : Form
         {
             using (var client = new HttpClient())
             {
-                string urlc = $"http://localhost:5221/api/QueueXray/GetPatientVisits/{hn}";
+                string urlc = $"http://172.16.200.202:5221/api/QueueXray/GetPatientVisits/{hn}";
                 string responsec = await SafeGetStringAsync(client, urlc);
                 
                 Console.WriteLine($"Patient API Response: {responsec}");
@@ -844,7 +844,7 @@ public partial class Form1 : Form
         {
             using (var client = new HttpClient())
             {
-                string urlp = $"http://localhost:5145/api/QueueSMC/GetLatestQueue?hn={hn}";
+                string urlp = $"http://172.16.200.202:5221/api/QueueXray/GetLatestQueue?hn={hn}";
                 string responsep = await SafeGetStringAsync(client, urlp);
                 
                 Console.WriteLine($"🔍 Raw JSON Response: {responsep}");
@@ -963,7 +963,7 @@ public partial class Form1 : Form
         Pen borderPen = new Pen(Brushes.Black, 1);
         StringFormat sfCenter = new StringFormat();
         sfCenter.Alignment = StringAlignment.Center;
-        g.DrawRectangle(borderPen, 5, 5, 278, 310);
+        g.DrawRectangle(borderPen, 5, 5, 278, 320);
 
         // วันที่และเวลา - จัดรูปแบบให้เหมือนในรูป
         g.DrawString($"วันที่ {DateTime.Now:dd MMM yyyy HH:mm:ss}", fontSubHeader, Brushes.Black, 8, 9);
@@ -993,21 +993,21 @@ public partial class Form1 : Form
         g.DrawLine(new Pen(Brushes.Black, 1), 5, 187, 284, 187);
 
 
-        g.DrawLine(new Pen(Brushes.Black, 1), 5, 247, 284, 247);
+        g.DrawLine(new Pen(Brushes.Black, 1), 5, 237, 284, 237);
 
         // ชื่อ
-        g.DrawString($"ชื่อ-สกุล: {_lastpname}{_lastfname} {_lastlname}", fontSmall, Brushes.Black, 8, 255);
+        g.DrawString($"ชื่อ-สกุล: {_lastpname}{_lastfname} {_lastlname}", fontSmall, Brushes.Black, 8, 245);
 
         // HN และ CID
-        g.DrawString($"HN: {_lastQueueHN}", fontSmall, Brushes.Black, 8, 275);
-        g.DrawString($"อายุ: {_lastage}", fontSmall, Brushes.Black, 110, 275);
+        g.DrawString($"HN: {_lastQueueHN}", fontSmall, Brushes.Black, 8, 265);
+        g.DrawString($"อายุ: {_lastage}", fontSmall, Brushes.Black, 110, 265);
         string queueSex = _lastsex == "1" ?
             $"ชาย" :
             $"หญิง";
-        g.DrawString($"เพศ: {queueSex}", fontSmall, Brushes.Black, 180, 275);
+        g.DrawString($"เพศ: {queueSex}", fontSmall, Brushes.Black, 180, 265);
 
-        // g.DrawString($"CID: {_lastcid}", fontSmall, Brushes.Black, 115, 215);
-        g.DrawString($"สิทธิ: ({_lastpttype}) {_lastname}", fontSmall, Brushes.Black, 8, 295);
+        g.DrawString($"CID: {_lastcid}", fontSmall, Brushes.Black, 8, 285);
+        g.DrawString($"สิทธิ: ({_lastpttype}) {_lastname}", fontSmall, Brushes.Black, 8, 305);
     }
 
     private void PrintDocumentQueue_PrintPage1(object sender, PrintPageEventArgs e)
@@ -1017,7 +1017,7 @@ public partial class Form1 : Form
         var fontSubHeader = new Font("TH-Sarabun-PSK", 14, FontStyle.Bold);
         var fontBody = new Font("TH-Sarabun-PSK", 12);
         var fontSmall = new Font("TH-Sarabun-PSK", 10);
-        var fontQueue = new Font("TH-Sarabun-PSK", 38);
+        var fontQueue = new Font("TH-Sarabun-PSK", 50, FontStyle.Bold);
         var fontQueue1 = new Font("TH-Sarabun-PSK", 20, FontStyle.Bold);
 
         var g = e.Graphics;
@@ -1049,7 +1049,7 @@ public partial class Form1 : Form
         Pen borderPen = new Pen(Brushes.Black, 1);
         StringFormat sfCenter = new StringFormat();
         sfCenter.Alignment = StringAlignment.Center;
-        g.DrawRectangle(borderPen, 5, 58, 278, 240);
+        g.DrawRectangle(borderPen, 5, 58, 278, 250);
 
         // ปรับตำแหน่งข้อความให้ไม่ทับรูป
         g.DrawString($"ใบนำทางรังสีวิทยา", fontHeader, Brushes.Black, 75, 13); // เลื่อนไปทางขวา
@@ -1073,7 +1073,7 @@ public partial class Form1 : Form
             $"{_lastQueueDdepartmentId}0{_lastQueueHx}" :
             $"{_lastQueueDdepartmentId}{_lastQueueHx}";
 
-        g.DrawString(queueNumber, fontQueue, Brushes.Black, new RectangleF(0, 149, 284, 60), sfCenter);
+        g.DrawString(queueNumber, fontQueue, Brushes.Black, new RectangleF(0, 145, 284, 70), sfCenter);
 
         // วาดเส้นคั่น (เหมือนในรูป)
         g.DrawLine(new Pen(Brushes.Black, 1), 5, 227, 284, 227);
@@ -1089,7 +1089,9 @@ public partial class Form1 : Form
             $"หญิง";
         g.DrawString($"เพศ: {queueSex}", fontSmall, Brushes.Black, 180, 250);
 
-        g.DrawString($"สิทธิ: ({_lastpttype}) {_lastname}", fontSmall, Brushes.Black, 8, 270);
+        g.DrawString($"CID: {_lastcid}", fontSmall, Brushes.Black, 8, 270);
+
+        g.DrawString($"สิทธิ: ({_lastpttype}) {_lastname}", fontSmall, Brushes.Black, 8, 290);
         // }
     }
 

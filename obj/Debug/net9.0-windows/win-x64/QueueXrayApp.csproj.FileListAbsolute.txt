@@ -287,6 +287,7 @@ D:\QueueXrayApp\obj\Debug\net9.0-windows\win-x64\QueueXrayApp.GeneratedMSBuildEd
 D:\QueueXrayApp\obj\Debug\net9.0-windows\win-x64\QueueXrayApp.AssemblyInfoInputs.cache
 D:\QueueXrayApp\obj\Debug\net9.0-windows\win-x64\QueueXrayApp.AssemblyInfo.cs
 D:\QueueXrayApp\obj\Debug\net9.0-windows\win-x64\QueueXrayApp.csproj.CoreCompileInputs.cache
+D:\QueueXrayApp\obj\Debug\net9.0-windows\win-x64\QueueXrayApp.sourcelink.json
 D:\QueueXrayApp\obj\Debug\net9.0-windows\win-x64\QueueXra.3927ED5D.Up2Date
 D:\QueueXrayApp\obj\Debug\net9.0-windows\win-x64\QueueXrayApp.dll
 D:\QueueXrayApp\obj\Debug\net9.0-windows\win-x64\refint\QueueXrayApp.dll
